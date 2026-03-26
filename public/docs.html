@@ -83,12 +83,12 @@
                     <div class="code-header"><span>HTTP Header</span><button class="copy-btn" data-target="auth-code">Copy</button></div>
                     <pre class="code-block" id="auth-code"><code>Authorization: Bearer Blankit_live_abc123def456</code></pre>
                 </div>
-                <p>API keys are prefixed with <code>Blankit_live_</code> for production and <code>Blankit_test_</code> for sandbox. Keep your keys secret — do not expose them in client-side code.</p>
+                <p>API keys are prefixed with <code>blankit_live_</code> for production and <code>Blankit_test_</code> for sandbox. Keep your keys secret — do not expose them in client-side code.</p>
                 <table class="doc-table">
                     <thead><tr><th>Key prefix</th><th>Environment</th><th>Billing</th></tr></thead>
                     <tbody>
-                        <tr><td><code>Blankit_test_</code></td><td>Sandbox</td><td>Free (limited to 100 req/day)</td></tr>
-                        <tr><td><code>Blankit_live_</code></td><td>Production</td><td>Per your plan</td></tr>
+                        <tr><td><code>blankit_test_</code></td><td>Sandbox</td><td>Free (limited to 100 req/day)</td></tr>
+                        <tr><td><code>blankit_live_</code></td><td>Production</td><td>Per your plan</td></tr>
                     </tbody>
                 </table>
             </section>
@@ -166,7 +166,7 @@
                 <div class="code-container">
                     <div class="code-header"><span>cURL</span><button class="copy-btn" data-target="redact-curl">Copy</button></div>
                     <pre class="code-block" id="redact-curl"><code>curl -X POST https://api.Blankit.dev/v1/redact \
-  -H "Authorization: Bearer Blankit_live_abc123" \
+  -H "Authorization: Bearer blankit_live_abc123" \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Please update the file for John Smith. His SSN is 123-45-6789 and email is john@example.com.",
@@ -228,7 +228,7 @@
                 <div class="code-container">
                     <div class="code-header"><span>cURL</span><button class="copy-btn" data-target="doc-curl">Copy</button></div>
                     <pre class="code-block" id="doc-curl"><code>curl -X POST https://api.Blankit.dev/v1/redact-doc \
-  -H "Authorization: Bearer Blankit_live_abc123" \
+  -H "Authorization: Bearer blankit_live_abc123" \
   -F "file=@report.docx" \
   -F 'categories={"emails":true,"ssn":true,"names":true}'</code></pre>
                 </div>
@@ -288,7 +288,7 @@
                 <div class="code-container">
                     <div class="code-header"><span>cURL</span><button class="copy-btn" data-target="unredact-curl">Copy</button></div>
                     <pre class="code-block" id="unredact-curl"><code>curl -X POST https://api.Blankit.dev/v1/unredact \
-  -H "Authorization: Bearer Blankit_live_abc123" \
+  -H "Authorization: Bearer blankit_live_abc123" \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Based on the records for [NAME_1], I recommend...",
@@ -361,7 +361,7 @@
                 <p>Get up and running in under 5 minutes.</p>
 
                 <h3>1. Get your API key</h3>
-                <p><a href="/#contact" class="inline-link">Contact us</a> to receive your API key. You'll get both a sandbox key (<code>Blankit_test_</code>) and a production key (<code>Blankit_live_</code>).</p>
+                <p><a href="/#contact" class="inline-link">Contact us</a> to receive your API key. You'll get both a sandbox key (<code>blankit_test_</code>) and a production key (<code>blankit_live_</code>).</p>
 
                 <h3>2. Install the SDK (optional)</h3>
                 <div class="code-container">
@@ -373,7 +373,7 @@
                 <h3>3. Redact before sending to your LLM</h3>
                 <div class="code-container">
                     <div class="code-header"><span>Node.js</span><button class="copy-btn" data-target="quickstart-node">Copy</button></div>
-                    <pre class="code-block" id="quickstart-node"><code>const Blankit_KEY = process.env.Blankit_API_KEY;
+                    <pre class="code-block" id="quickstart-node"><code>const blankit_KEY = process.env.blankit_API_KEY;
 
 // Step 1: Redact PII from user prompt
 const redactRes = await fetch('https://api.Blankit.dev/v1/redact', {
@@ -402,7 +402,7 @@ const llmOutput = llmRes.choices[0].message.content;
 const restoreRes = await fetch('https://api.Blankit.dev/v1/unredact', {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${Blankit_KEY}`,
+    'Authorization': `Bearer ${blankit_KEY}`,
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
@@ -420,7 +420,7 @@ const { restored_text } = await restoreRes.json();
                     <div class="code-header"><span>Python</span><button class="copy-btn" data-target="quickstart-python">Copy</button></div>
                     <pre class="code-block" id="quickstart-python"><code>import requests, os
 
-API_KEY = os.environ["Blankit_API_KEY"]
+API_KEY = os.environ["blankit_API_KEY"]
 BASE    = "https://api.Blankit.dev/v1"
 HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
 
